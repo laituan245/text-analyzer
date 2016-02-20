@@ -14,5 +14,20 @@ block content
         p.lead I can help you understand any text document ...
       form.col-lg-12
         .col-sm-offset-2.col-sm-8
-          textarea#textdocument.form-control(rows='5', cols='20', placeholder='Enter your text document ...')
-        button.col-sm-offset-4.col-sm-4.btn.btn-success(onclick='onSubmitButtonClicked()', style='margin-top: 10px; font-size: 18px;', type='button') Submit
+          textarea#textdocument.form-control(rows='8', cols='20', placeholder='Enter your text document ...')
+        div.col-sm-offset-3.col-sm-6
+          div.col-sm-6
+            button.col-sm-12.btn.btn-warning(onclick='onSubmitButtonClicked()', style='margin-top: 18px; font-size: 20px;', type='button') Submit
+          div.col-sm-6  
+            button.col-sm-12.btn.btn-warning(onclick='loadSampleDocument()', style='margin-top: 18px; font-size: 20px;', type='button') Load Sample Document
+
+  #myPleaseWait.modal.fade.bs-example-modal-sm(tabindex='-1', role='dialog', aria-hidden='true', data-backdrop='static')
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          h4.modal-title
+            span.glyphicon.glyphicon-time
+            |  Please Wait
+        .modal-body
+          .progress
+            .progress-bar.progress-bar-info.progress-bar-striped.active(style='width: 100%')

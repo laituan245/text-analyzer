@@ -6,6 +6,7 @@
     "email": "laituan245@kaist.ac.kr"
   },
   "dependencies": {
+    "aylien_textapi": "^0.5.0",
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
     "jade": "*",

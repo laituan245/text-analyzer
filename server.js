@@ -1,7 +1,7 @@
 // server.js (Express 4.0)
 
 // modules =================================================
-var routes              = require('./app/routes');
+var main                = require('./app/routes/main');
 var express             = require('express');
 var http                = require('http');
 var path                = require('path');
@@ -21,7 +21,8 @@ app.use(methodOverride());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', routes.index);
+app.get('/', main.index);
+app.post('/api/summarize', main.summarize);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
