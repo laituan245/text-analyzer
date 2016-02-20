@@ -1,0 +1,18 @@
+extends layout
+
+block extracss
+  link(rel='stylesheet', href='css/index.css')
+
+block extrajs
+  script(src='js/index.js')
+
+block content
+  .container-full
+    .row
+      .col-lg-12.text-center.v-center
+        h1 Hello there
+        p.lead I can help you understand any text document ...
+      form.col-lg-12
+        .col-sm-offset-2.col-sm-8
+          textarea#textdocument.form-control(rows='5', cols='20', placeholder='Enter your text document ...')
+        button.col-sm-offset-4.col-sm-4.btn.btn-success(onclick='onSubmitButtonClicked()', style='margin-top: 10px; font-size: 18px;', type='button') Submit

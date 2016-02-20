@@ -1,0 +1,16 @@
+{
+  "name": "text-analyzer",
+  "main": "server.js",
+  "author": {
+    "name": "Tuan Lai M.",
+    "email": "laituan245@kaist.ac.kr"
+  },
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "jade": "*",
+    "method-override": "~2.0.2",
+    "morgan": "~1.0.0",
+    "stylus": "^0.53.0"
+  }
+}
