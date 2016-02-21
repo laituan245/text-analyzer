@@ -1,3 +1,6 @@
+var http = require('http');
+var querystring = require('querystring');
+var parser = require('xml2json');
 var AYLIENTextAPI = require('aylien_textapi');
 var textapi = new AYLIENTextAPI({
   application_id: "ae16ddc7",
@@ -16,6 +19,30 @@ exports.index = function (req, res) {
 
 exports.about = function (req, res) {
 	res.render('about');
+}
+
+exports.classify = function(req, res) {
+	var textdata = req.body.text;
+	var options = {
+		host: 'uclassify.com',
+		path: '/browse/uClassify/Topics/ClassifyText?readkey=LYUHqDf3Jpjx&text=' + querystring.escape(textdata)
+	};
+	
+	callback = function(response) {
+		var str = '';
+		//another chunk of data has been recieved, so append it to `str`
+		response.on('data', function (chunk) {
+			str += chunk;
+		});
+		
+		//the whole response has been recieved, so we just print it out here
+		response.on('end', function () {
+			str = parser.toJson(str);
+			res.send({'success': true, 'payload': str});
+		});
+	}
+	
+	http.request(options, callback).end();	
 }
 
 exports.summarize = function(req, res) {

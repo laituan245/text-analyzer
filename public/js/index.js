@@ -19,7 +19,6 @@ function onSubmitButtonClicked() {
 			dataType:'json',
 			success: function (data) {
 				data_payload = JSON.parse(data.payload);
-				$('#myPleaseWait').modal('hide');
 				$('#summary-container').removeClass('hidden');
 				$('#summary-container').find('tbody').empty();
 				for (var i = 0; i < data_payload.length; i++) {
@@ -31,9 +30,21 @@ function onSubmitButtonClicked() {
 					tmpTr.appendChild(tmpTh);
 					tmpTr.appendChild(tmpTd);
 					$('#summary-container').find('tbody').append(tmpTr);
-					window.scrollBy(0,100);
 				}
-				
+				$.ajax({
+					type: "POST",
+					url: "/api/classify",
+					data: JSON.stringify({
+						text: textdata
+					}),
+					contentType: "application/json",
+					dataType:'json',
+					success: function (data) {
+						data_payload = JSON.parse(data.payload).uclassify.readCalls.classify.classification;
+						console.log(data_payload);
+						$('#myPleaseWait').modal('hide');
+					}
+				});				
 			}
 		});
     }

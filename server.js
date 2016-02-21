@@ -24,6 +24,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', main.index);
 app.get('/about', main.about);
 app.post('/api/summarize', main.summarize);
+app.post('/api/classify', main.classify);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
