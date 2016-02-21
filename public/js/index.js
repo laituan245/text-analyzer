@@ -31,7 +31,9 @@ function onSubmitButtonClicked() {
 					tmpTr.appendChild(tmpTh);
 					tmpTr.appendChild(tmpTd);
 					$('#summary-container').find('tbody').append(tmpTr);
+					window.scrollBy(0,100);
 				}
+				
 			}
 		});
     }

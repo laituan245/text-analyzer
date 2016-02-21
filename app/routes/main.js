@@ -14,6 +14,10 @@ exports.index = function (req, res) {
     res.render('index');
 };
 
+exports.about = function (req, res) {
+	res.render('about');
+}
+
 exports.summarize = function(req, res) {
     var textdata = req.body.text;
     var nbofdots = 0;

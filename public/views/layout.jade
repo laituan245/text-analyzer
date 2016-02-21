@@ -6,10 +6,18 @@ html
     link(rel='stylesheet', href='libs/components-font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href='libs/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='libs/sweetalert/dist/sweetalert.css')
+    link(rel='stylesheet', href='css/navbar.css')
     script(src='libs/jquery/dist/jquery.min.js')
     script(src='libs/bootstrap/dist/js/bootstrap.min.js')
     script(src='libs/sweetalert/dist/sweetalert.min.js')
     block extracss
     block extrajs
   body
+    nav.navbar.navbar-inverse
+      div
+        ul.nav.navbar-nav.navbar-left
+          li
+            a(href='/') Home
+          li
+            a(href='/about') About
     block content

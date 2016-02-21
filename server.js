@@ -22,6 +22,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', main.index);
+app.get('/about', main.about);
 app.post('/api/summarize', main.summarize);
 
 http.createServer(app).listen(app.get('port'), function () {

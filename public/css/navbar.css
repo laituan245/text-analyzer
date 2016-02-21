@@ -1,0 +1,8 @@
+.navbar {
+	border-radius: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.navbar.navbar-inverse { 
+	background-color: #222222; 
+}

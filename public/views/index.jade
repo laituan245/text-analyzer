@@ -15,11 +15,14 @@ block content
       form.col-lg-12
         .col-sm-offset-2.col-sm-8
           textarea#textdocument.form-control(rows='8', cols='20', placeholder='Enter your text document ...')
-        div.col-sm-offset-3.col-sm-6
+        div.col-sm-offset-3.col-sm-6(style='margin-top: 18px;')
+          div.col-sm-12(style='margin-bottom:15px; text-align: center;')
+            span(style='font-size:16px') Loading a sample text
+              i.fa.fa-arrow-circle-right.btn(onclick="loadSampleDocument()")
           div.col-sm-6
-            button.col-sm-12.btn.btn-warning(onclick='onSubmitButtonClicked()', style='margin-top: 18px; font-size: 20px;', type='button') Submit
-          div.col-sm-6  
-            button.col-sm-12.btn.btn-warning(onclick='loadSampleDocument()', style='margin-top: 18px; font-size: 20px;', type='button') Load Sample Document
+            button.col-sm-12.btn.btn-warning(onclick='onSubmitButtonClicked()', style='font-size: 20px;', type='button') Analyze
+          div.col-sm-6
+            button.col-sm-12.btn.btn-warning(style='font-size: 20px;', type='button') Generate Audio
     .row.col-sm-offset-2.col-sm-8.hidden#summary-container(style = 'margin-top: 40px')
       h2 Summary
       table.table.table-bordered
