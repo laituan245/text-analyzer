@@ -10,6 +10,13 @@ h1 {
   color:#DDCCEE;
 }
 
+h2 {
+  font-family: 'Antic Slab', serif;
+  font-size:padding: 0 0 0 0;0px;
+  color:#DDCCEE;
+}
+
+
 textarea {
     resize: none;
 }

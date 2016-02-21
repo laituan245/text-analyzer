@@ -20,7 +20,24 @@ block content
             button.col-sm-12.btn.btn-warning(onclick='onSubmitButtonClicked()', style='margin-top: 18px; font-size: 20px;', type='button') Submit
           div.col-sm-6  
             button.col-sm-12.btn.btn-warning(onclick='loadSampleDocument()', style='margin-top: 18px; font-size: 20px;', type='button') Load Sample Document
-
+    .row.col-sm-offset-2.col-sm-8.hidden#summary-container(style = 'margin-top: 40px')
+      h2 Summary
+      table.table.table-bordered
+        thead
+          tr
+            th #
+            th Key Sentences
+        tbody
+          tr
+            th(scope='row') 1
+            td Mark
+          tr
+            th(scope='row') 2
+            td Jacob
+          tr
+            th(scope='row') 3
+            td Larry
+            
   #myPleaseWait.modal.fade.bs-example-modal-sm(tabindex='-1', role='dialog', aria-hidden='true', data-backdrop='static')
     .modal-dialog.modal-sm
       .modal-content

@@ -18,8 +18,20 @@ function onSubmitButtonClicked() {
 			contentType: "application/json",
 			dataType:'json',
 			success: function (data) {
-				console.log(data.payload);
+				data_payload = JSON.parse(data.payload);
 				$('#myPleaseWait').modal('hide');
+				$('#summary-container').removeClass('hidden');
+				$('#summary-container').find('tbody').empty();
+				for (var i = 0; i < data_payload.length; i++) {
+					var tmpTr = document.createElement('tr');
+					var tmpTh = document.createElement('th');
+					var tmpTd = document.createElement('td');
+					tmpTd.innerHTML = (data_payload[i]);
+					tmpTh.innerHTML = (i+1);
+					tmpTr.appendChild(tmpTh);
+					tmpTr.appendChild(tmpTd);
+					$('#summary-container').find('tbody').append(tmpTr);
+				}
 			}
 		});
     }
