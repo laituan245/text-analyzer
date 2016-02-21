@@ -18,12 +18,12 @@ block content
           textarea#textdocument.form-control(rows='8', cols='20', placeholder='Enter your text document ...')
         div.col-sm-offset-3.col-sm-6(style='margin-top: 18px;')
           div.col-sm-12(style='margin-bottom:15px; text-align: center;')
-            span(style='font-size:16px') Loading a sample text
-              i.fa.fa-arrow-circle-right.btn(onclick="loadSampleDocument()")
+            span(style='font-size:16px') Reset
+              i.fa.fa-refresh.btn(onclick="resetDocumentTxtArea()")
           div.col-sm-6
             button.col-sm-12.btn.btn-warning(onclick='onSubmitButtonClicked()', style='font-size: 20px;', type='button') Analyze
           div.col-sm-6
-            button.col-sm-12.btn.btn-warning(style='font-size: 20px;', type='button') Generate Audio
+            button.col-sm-12.btn.btn-warning(onclick="loadSampleDocument()",style='font-size: 20px;', type='button') Load a sample text
     .container
       .row.col-sm-5.hidden#topics-and-subtopics-container(style = 'margin-top: 40px')
         h2 Topic
