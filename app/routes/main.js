@@ -80,20 +80,31 @@ exports.classify = function(req, res) {
 	http.request(options, callback).end();	
 }
 
+
 exports.summarize = function(req, res) {
     var textdata = req.body.text;
     var nbofdots = 0;
     for (var i = 0; i < textdata.length; i++)
-    	if (textdata[i] == '.')
-    		nbofdots += 1;
+		if (textdata[i] == '.')
+			nbofdots += 1;
     textapi.summarize({
 		title : 'My text document',
 		text : textdata,
 		sentences_number: max(1, parseInt(nbofdots/3))
 	}, function(error, response) {
 		if (error === null) {
-			res.send({'success': true, 
-					  'payload': JSON.stringify(response.sentences)});
+			var textmode = 'tweet';
+			if (textdata.length > 150)
+				textmode = 'document';
+			textapi.sentiment({
+				text: textdata,
+				mode: textmode
+			}, function(error, anotherresponse) {
+				res.send({'success': true, 
+				'payload': JSON.stringify(response.sentences),
+				'anotherpayload': JSON.stringify(anotherresponse)	
+				});
+			});
 		}
 	});
 };

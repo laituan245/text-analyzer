@@ -88,6 +88,21 @@ function onSubmitButtonClicked() {
 			contentType: "application/json",
 			dataType:'json',
 			success: function (data) {
+				data_basicinfo = JSON.parse(data.anotherpayload);
+				$('#basicinfo-container').empty();
+				var tmph2 = document.createElement('h2');
+				tmph2.innerHTML = 'Basic Info';
+				
+				var tmpParagraph = document.createElement('p');
+				var tmptextcolor = 'white';
+				if (data_basicinfo.polarity === 'negative')
+					tmptextcolor = 'red';
+				else if (data_basicinfo.polarity === 'positive')
+					tmptextcolor = 'green';
+				tmpParagraph.innerHTML = 'It seems that the tone is <b><font color="' + tmptextcolor +'">' + data_basicinfo.polarity + '</font></b>.<br><br>';
+				$('#basicinfo-container').append(tmph2);
+				$('#basicinfo-container').append(tmpParagraph);
+				
 				data_payload = JSON.parse(data.payload);
 				$('#summary-container').find('tbody').empty();
 				for (var i = 0; i < data_payload.length; i++) {
@@ -168,9 +183,10 @@ function onSubmitButtonClicked() {
 										$('#checkbox1').attr('checked', false); // Unchecks it
 										$('#summary-container').removeClass('hidden');
 										$('#topics-and-subtopics-container').removeClass('hidden');
+										$('#basicinfo-container').removeClass('hidden');
 										$('#subtopics-container').addClass('hidden');
 										$('#topics-container').removeClass('hidden');
-										document.getElementById('summary-container').scrollIntoView();
+										document.getElementById('analytic-container').scrollIntoView();
 									}
 								}
 							});		
