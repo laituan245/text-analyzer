@@ -21,6 +21,41 @@ exports.about = function (req, res) {
 	res.render('about');
 }
 
+exports.classifybysubtopics = function(req, res) {
+	var textdata = req.body.text;
+	var topicname = req.body.topicname;
+	if (topicname === 'Computers')
+		topicname = 'Computer';
+	if (topicname === 'Arts')
+		topicname = 'Art';
+	if (topicname === 'Games')
+		topicname = 'Game';
+	if (topicname === 'Sports')
+		topicname = 'Sport';
+	
+	var classifierNames = topicname + '%20' + 'Topics';
+	
+	var options = {
+		host: 'uclassify.com',
+		path: '/browse/uClassify/' + classifierNames + '/ClassifyText?readkey=LYUHqDf3Jpjx&text=' + querystring.escape(textdata)
+	}
+	
+	callback = function(response) {
+		var str = '';
+		//another chunk of data has been recieved, so append it to `str`
+		response.on('data', function (chunk) {
+			str += chunk;
+		});
+		
+		//the whole response has been recieved, so we just print it out here
+		response.on('end', function () {
+			str = parser.toJson(str);
+			res.send({'success': true, 'payload': str});
+		});
+	}
+	http.request(options, callback).end();		
+}
+
 exports.classify = function(req, res) {
 	var textdata = req.body.text;
 	var options = {

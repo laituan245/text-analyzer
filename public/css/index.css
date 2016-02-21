@@ -48,6 +48,12 @@ textarea {
   vertical-align: middle;
 }
 
+.checkbox-label input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+}
+
 /* Custom container */
 .container-full {
   margin: 0 auto;
